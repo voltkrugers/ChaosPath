@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Command
 {
-    public string direction;
+    public Vector2 direction;
     public float time;
 
-    public Command(string dir, float t)
+    public Command(Vector2 dir, float t)
     {
         direction = dir;
         time = t;

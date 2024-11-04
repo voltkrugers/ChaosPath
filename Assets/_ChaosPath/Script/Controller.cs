@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int playerId; 
+    public int playerId;
     public float moveSpeed = 5f;
     private List<Command> commands = new List<Command>();
     private bool isRecording = false;
-    
+    private Vector2 lastDirection = Vector2.zero;
+
     void Update()
     {
         if (isRecording)
@@ -26,21 +27,16 @@ public class PlayerController : MonoBehaviour
 
     private void RecordInput()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxis("Vertical");
+
+        Vector2 direction = new Vector2(moveX, moveY);
+
+       
+        if (direction != lastDirection)
         {
-            commands.Add(new Command("Right", Time.time));
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            commands.Add(new Command("Left", Time.time));
-        }        
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            commands.Add(new Command("Up", Time.time));
-        }       
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            commands.Add(new Command("Down", Time.time));
+            commands.Add(new Command(direction, Time.time));
+            lastDirection = direction;
         }
     }
 
@@ -58,30 +54,12 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ExecuteCommands()
     {
-        for (int i = 0; i < commands.Count; i++)
+        foreach (Command command in commands)
         {
-            Command currentCommand = commands[i];
-            float commandDuration = (i < commands.Count - 1) ? commands[i + 1].time - currentCommand.time : 0.1f;
-
             float startTime = Time.time;
-            while (Time.time < startTime + commandDuration)
+            while (Time.time < startTime + 0.01f)
             {
-                switch (currentCommand.direction)
-                {
-                    case "Right":
-                        Move(Vector2.right);
-                        break;
-                    case "Left":
-                        Move(Vector2.left);
-                        break;
-                    case "Up":
-                        Move(Vector2.up);
-                        break;
-                    case "Down":
-                        Move(Vector2.down);
-                        break;
-
-                }
+                Move(command.direction);
                 yield return null;
             }
         }
@@ -89,6 +67,6 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector2 direction)
     {
-        transform.Translate(direction * moveSpeed * Time.deltaTime);
+        transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
     }
 }
