@@ -12,16 +12,14 @@ public class GameConstructor : MonoBehaviour
     public int numberOfMeteorites = 20;
     public float minDistanceFromStartOrEnd = 1.0f;
     public List<GameObject> Player;
-    public List<PlayerController> playerControllers;
+    
 
     void Start()
     {
         GenerateMap();
-        StartCoroutine(SequencePlayers());
-
     }
 
-    private void GenerateMap()
+    public void GenerateMap()
     {
 
         Camera cam = Camera.main;
@@ -74,22 +72,9 @@ public class GameConstructor : MonoBehaviour
         
         foreach (PlayerController player in players)
         {
-            playerControllers.Add(player);
+           GameManager.Instance.playerControllers.Add(player);
         }
     }
 
-    private IEnumerator SequencePlayers()
-    {
-        foreach (PlayerController player in playerControllers)
-        {
-            player.StartRecording();
-        }
-        
-        yield return new WaitForSeconds(10);
-
-        foreach (PlayerController player in playerControllers)
-        {
-            player.PlayCommands();
-        }
-    }
+   
 }

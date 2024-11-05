@@ -1,18 +1,56 @@
+using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance { get; private set; }
+    public List<PlayerController> playerControllers;
+
+    public bool EndGame = false;
+    private int pointsJ1,pointsJ2;
+
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+    private void Start()
+    {
+        pointsJ1 = 0;
+        pointsJ2 = 0;
+    }
+    
+
+    public IEnumerator SequencePlayers()
+    {
+        foreach (PlayerController player in playerControllers)
+        {
+            player.StartRecording();
+        }
+        
+        yield return new WaitForSeconds(10);
+
+        foreach (PlayerController player in playerControllers)
+        {
+            player.PlayCommands();
+        }
         
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void EndManche(int pointsGagnesJ1, int pointsGagnesJ2)
     {
-        
+        EndGame = true;
+        pointsJ1 += pointsGagnesJ1;
+        pointsJ2 += pointsGagnesJ2;
+        Debug.Log("Points mis à jour : " + pointsJ1 + " vs " + pointsJ2); 
     }
 }
