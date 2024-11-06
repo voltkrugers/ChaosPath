@@ -7,18 +7,16 @@ public class PlayerController : MonoBehaviour
 {
     public int playerId;
     public float moveSpeed = 5f;
-    public Transform PlayPos;
     private List<Command> commands = new List<Command>();
     private bool isRecording = false;
     private Vector2 lastDirection = Vector2.zero;
-    public GameConstructor GameConstructor;
+    public SpriteRenderer Image;
+    
     
 
     private void Start()
     {
-        //PlayPos = GameConstructor.startPrefab.transform;
-        Debug.Log(PlayPos.position);
-       StartCoroutine(GameManager.Instance.SequencePlayers());
+
     }
 
     void Update()
@@ -72,22 +70,15 @@ public class PlayerController : MonoBehaviour
                 yield return null;
             }
         }
-        ReplacePlayer();
-        
-        if (!GameManager.Instance.EndGame)
-        {
-            GameManager.Instance.SequencePlayers();
-            Debug.Log("restartManche");
-        }
     }
 
     private void Move(Vector2 direction)
     {
         transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
-    }
-
-    private void ReplacePlayer()
-    {
-        //transform.position = PlayPos.position;
+        // if (direction != Vector2.zero)
+        // {
+        //     float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
+        //     Image.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        // }
     }
 }

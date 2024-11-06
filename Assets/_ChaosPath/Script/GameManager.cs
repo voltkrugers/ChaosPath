@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,7 +44,23 @@ public class GameManager : MonoBehaviour
         {
             player.PlayCommands();
         }
+
+        yield return new WaitForSeconds(10);
         
+        if (!EndGame)
+        {
+            Debug.Log("restart manche");
+            ReplacePlayer();
+            StartCoroutine(SequencePlayers());
+        }
+        
+    }
+    private void ReplacePlayer()
+    {
+        foreach (var player in playerControllers)
+        {
+            player.gameObject.transform.position = GameConstructor.PosStart;
+        }
     }
     
     public void EndManche(int pointsGagnesJ1, int pointsGagnesJ2)
@@ -51,6 +68,7 @@ public class GameManager : MonoBehaviour
         EndGame = true;
         pointsJ1 += pointsGagnesJ1;
         pointsJ2 += pointsGagnesJ2;
-        Debug.Log("Points mis à jour : " + pointsJ1 + " vs " + pointsJ2); 
+        Debug.Log("Points mis à jour : " + pointsJ1 + " vs " + pointsJ2);
+        SceneManager.LoadScene("SampleScene");
     }
 }

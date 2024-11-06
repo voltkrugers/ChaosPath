@@ -122,7 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 1
-  moveSpeed: 2
+  moveSpeed: 3
+  Image: {fileID: 2668499139802392453}
 --- !u!50 &584416077026809103
 Rigidbody2D:
   serializedVersion: 4

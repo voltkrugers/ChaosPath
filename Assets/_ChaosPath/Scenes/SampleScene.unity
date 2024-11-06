@@ -411,6 +411,7 @@ MonoBehaviour:
   Player:
   - {fileID: 8412898135791319891, guid: 99d2e7e0b7b18c443a64978c9de9da0e, type: 3}
   - {fileID: 1985410156551461661, guid: 74e840ed91542f14a9e4a6a1f3eac989, type: 3}
+  - {fileID: 1985410156551461661, guid: c4c6e864470651b40bfad6530d82666e, type: 3}
 --- !u!1 &1929384062
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControllers: []
+  EndGame: 0
 --- !u!4 &1929384064
 Transform:
   m_ObjectHideFlags: 0

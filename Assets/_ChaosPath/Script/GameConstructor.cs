@@ -12,6 +12,7 @@ public class GameConstructor : MonoBehaviour
     public int numberOfMeteorites = 20;
     public float minDistanceFromStartOrEnd = 1.0f;
     public List<GameObject> Player;
+    public static Vector3 PosStart;
     
 
     void Start()
@@ -25,21 +26,21 @@ public class GameConstructor : MonoBehaviour
         Camera cam = Camera.main;
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;
-
-        Vector3 startPosition = GetRandomPositionWithinCameraView(width, height);
+            
+        PosStart = GetRandomPositionWithinCameraView(width, height);
         Vector3 endPosition = GetRandomPositionWithinCameraView(width, height);
 
-        while (Vector3.Distance(startPosition, endPosition) < (width + height) / 3)
+        while (Vector3.Distance(PosStart, endPosition) < (width + height) / 3)
         {
             endPosition = GetRandomPositionWithinCameraView(width, height);
         }
 
-        Instantiate(startPrefab, startPosition, Quaternion.identity);
+        Instantiate(startPrefab, PosStart, Quaternion.identity);
         Instantiate(endPrefab, endPosition, Quaternion.identity);
 
         foreach (var player in Player)
         {
-            Instantiate(player, startPosition, quaternion.identity);
+            Instantiate(player, PosStart, quaternion.identity);
         }
         
         SearchPlayer();
@@ -50,13 +51,14 @@ public class GameConstructor : MonoBehaviour
             {
                 meteorPosition = GetRandomPositionWithinCameraView(width, height);
             }
-            while(Vector3.Distance(meteorPosition, startPosition) < minDistanceFromStartOrEnd ||
+            while(Vector3.Distance(meteorPosition, PosStart) < minDistanceFromStartOrEnd ||
                   Vector3.Distance(meteorPosition, endPosition) < minDistanceFromStartOrEnd);
 
             GameObject randomMeteorite = meteoritePrefabs[Random.Range(0, meteoritePrefabs.Count)];
             Instantiate(randomMeteorite, meteorPosition, Quaternion.identity);
             
         }
+        StartCoroutine(GameManager.Instance.SequencePlayers());
     }
 
     private Vector3 GetRandomPositionWithinCameraView(float width, float height)
@@ -76,5 +78,4 @@ public class GameConstructor : MonoBehaviour
         }
     }
 
-   
 }
