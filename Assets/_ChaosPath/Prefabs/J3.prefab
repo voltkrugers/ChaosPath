@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7352533514895539717}
   - component: {fileID: 6217804975914864192}
   m_Layer: 0
-  m_Name: J2
+  m_Name: J3
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de0b347a7b3987499d5885915d65559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 2
+  playerId: 3
   moveSpeed: 3
   Image: {fileID: 5828120053693740669}
 --- !u!50 &7352533514895539717
