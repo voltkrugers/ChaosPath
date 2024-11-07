@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private List<Command> commands = new List<Command>();
     private bool isRecording = false;
     private Vector2 lastDirection = Vector2.zero;
-    public int HasCoin=0;
+    public int HasCoin = 0;
 
     void Update()
     {
@@ -28,12 +28,15 @@ public class PlayerController : MonoBehaviour
 
     private void RecordInput()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
+        // Utiliser des axes spÃ©cifiques pour chaque joueur
+        string horizontalAxis = "Horizontal" + playerId;
+        string verticalAxis = "Vertical" + playerId;
+
+        float moveX = Input.GetAxis(horizontalAxis);
+        float moveY = Input.GetAxis(verticalAxis);
 
         Vector2 direction = new Vector2(moveX, moveY);
 
-       
         if (direction != lastDirection)
         {
             commands.Add(new Command(direction, Time.time));
