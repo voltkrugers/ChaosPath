@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +9,7 @@ public class PlayerController : MonoBehaviour
     private List<Command> commands = new List<Command>();
     private bool isRecording = false;
     private Vector2 lastDirection = Vector2.zero;
-    public SpriteRenderer Image;
-    
-    
-
-    private void Start()
-    {
-
-    }
+    public int HasCoin=0;
 
     void Update()
     {
@@ -41,10 +33,12 @@ public class PlayerController : MonoBehaviour
 
         Vector2 direction = new Vector2(moveX, moveY);
 
-
+       
+        if (direction != lastDirection)
+        {
             commands.Add(new Command(direction, Time.time));
             lastDirection = direction;
-        
+        }
     }
 
     private IEnumerator StopRecordingAfterTime(float duration)
@@ -75,10 +69,5 @@ public class PlayerController : MonoBehaviour
     private void Move(Vector2 direction)
     {
         transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
-        // if (direction != Vector2.zero)
-        // {
-        //     float angle = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
-        //     Image.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        // }
     }
 }
