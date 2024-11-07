@@ -58,6 +58,9 @@ public class GameConstructor : MonoBehaviour
             Instantiate(randomMeteorite, meteorPosition, Quaternion.identity);
             
         }
+        
+        
+        
         StartCoroutine(GameManager.Instance.SequencePlayers());
     }
 

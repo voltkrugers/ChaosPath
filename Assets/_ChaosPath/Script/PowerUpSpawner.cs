@@ -11,6 +11,7 @@ public class PowerUpSpawner : MonoBehaviour
     public List<GameObject> Coins;
     private float camerHeight = 0f;
     private float cameraWidth = 0f;
+    private int countTime;
 
     public void Start()
     {
@@ -37,7 +38,7 @@ public class PowerUpSpawner : MonoBehaviour
 
     }
 
-    public void Update() //ca va d�gager ca
+    public void Update() //ca va d�gager ca
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -57,7 +58,7 @@ public class PowerUpSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnAsteroidNonMovable() //Asteroid spawn dans la zone vue par la cam�ra
+    public void SpawnAsteroidNonMovable() //Asteroid spawn dans la zone vue par la cam�ra
     {
         if (AsteroidNonMovable.Count > 0)
         {
@@ -99,12 +100,50 @@ public class PowerUpSpawner : MonoBehaviour
         {
             Vector3 spawnpos = GetPositionWithinCameraView(new Vector3(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f)));
             spawnpos.z = 0;
-            Instantiate(Coins[Random.Range(0, Coins.Count)], spawnpos, Quaternion.identity);
-
+            GameObject coin =  Instantiate(Coins[Random.Range(0, Coins.Count)], spawnpos, Quaternion.identity);
+            verifOtherObj(coin);
             Debug.Log("Spawned Coin here: " + spawnpos);
         }
     }
 
+    public void verifOtherObj(GameObject ObjToVerif)
+    {
+        float checkRadius = 1.0f; 
+        Vector2 positionToCheck = ObjToVerif.transform.position;
+        Collider2D hit = Physics2D.OverlapCircle(positionToCheck, checkRadius);
+
+        if (hit == null)
+        {
+            Debug.Log("Pas d'autre objet à proximité, déplacement possible.");
+        }
+        else
+        {
+            Debug.Log($"Collision détectée avec l'objet : {hit.gameObject.name}. Relocaliser.");
+            FindNewPosition(ObjToVerif);
+        }
+    }
+
+    private void FindNewPosition(GameObject obj)
+    {
+        countTime++;
+        if (countTime>10)
+        {
+            Destroy(obj);
+            countTime = 0;
+            return;
+        }
+        Vector2 newPosition = GetPositionWithinCameraView(new Vector3(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f)));;
+        Collider2D hit = Physics2D.OverlapCircle(newPosition, 1.0f);
+
+        if (hit != null)
+        {
+            FindNewPosition(obj);
+            return;
+        }
+        obj.transform.position = newPosition;
+        Debug.Log("Objet déplacé vers une position libre.");
+        countTime = 0;
+    }
     private Vector3 GetPointsOutsideView()
     {
         float x = 0;

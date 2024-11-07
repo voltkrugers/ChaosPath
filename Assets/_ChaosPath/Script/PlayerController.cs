@@ -37,11 +37,10 @@ public class PlayerController : MonoBehaviour
 
         Vector2 direction = new Vector2(moveX, moveY);
 
-        if (direction != lastDirection)
-        {
+
             commands.Add(new Command(direction, Time.time));
             lastDirection = direction;
-        }
+
     }
 
     private IEnumerator StopRecordingAfterTime(float duration)

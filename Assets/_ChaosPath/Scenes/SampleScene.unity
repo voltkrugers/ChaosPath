@@ -375,6 +375,73 @@ MonoBehaviour:
   CountDownTimer: {fileID: 66800076}
   textPhase: {fileID: 1680660432}
   timeBetweenPhase: 10
+--- !u!1 &343388272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343388274}
+  - component: {fileID: 343388273}
+  m_Layer: 0
+  m_Name: asteroidspawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &343388273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343388272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e110bcf78ec467846b0d8b24616b8da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AsteroidNonMovable:
+  - {fileID: 3955418798240587005, guid: 1ddcaec86d781b346a3c649c52881489, type: 3}
+  - {fileID: 6542101368399430838, guid: d44183cd193522544b0c548942fead2f, type: 3}
+  - {fileID: 122214560388886015, guid: 347beb7b6d60b7a42a57eb1b7791dfde, type: 3}
+  - {fileID: 1416072628507055035, guid: 19e67ec892124cf4ea8749a7fe5c23e7, type: 3}
+  - {fileID: 8869476336097629157, guid: e307f0608ec588849a22962b33c1519d, type: 3}
+  - {fileID: 3525697572991576568, guid: 3e680d3cbbb22f043834348fcdfcf535, type: 3}
+  - {fileID: 6192019827025467921, guid: bf0bc21d327ec854bafefe11db10bb6a, type: 3}
+  AsteroidCrossing:
+  - {fileID: 1273717868519207366, guid: 0b41583a19866d64b9483e371372b152, type: 3}
+  - {fileID: 172733410043596393, guid: 9414f1de790ceba4981080f5a92c1e7a, type: 3}
+  - {fileID: 1829189280640820382, guid: 08a70313ad2a0684091ccf6eda1d1c4b, type: 3}
+  - {fileID: 8266873878386540212, guid: 1d97248342260d0499c4076daea2a344, type: 3}
+  - {fileID: 1187051454626278293, guid: 077627ae38bbfa7418e49ce0a2cf6bc4, type: 3}
+  - {fileID: 72295631480350893, guid: 6e69bc2eb95eb2d47a9dad1659760965, type: 3}
+  AsteroidAlternating:
+  - {fileID: 5746131542090720143, guid: cf430feeb70b624409f0779ce8703445, type: 3}
+  - {fileID: 7447591736114443710, guid: e055880979ff0644faeaa8062d0e7f9a, type: 3}
+  - {fileID: 3936309852198016857, guid: 6043b8e07446d1b47bb9ac612e374400, type: 3}
+  - {fileID: 4096168605669188529, guid: ac790be64a5e16f42808ee8101bba64a, type: 3}
+  - {fileID: 3339019802863068271, guid: c100f56ffe6673044b794c5de263bb67, type: 3}
+  Coins:
+  - {fileID: 7748230369607341328, guid: e7fc73fdd0bd9ff4fa0df5b7aec9dad0, type: 3}
+--- !u!4 &343388274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343388272}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,24 +708,18 @@ MonoBehaviour:
   startPrefab: {fileID: 7321339136431600351, guid: f3ce89a61b3c98641bfeefecc3884f4b, type: 3}
   endPrefab: {fileID: 5965551161801312017, guid: 3b07472321bccc74f8ffbbd77a15080a, type: 3}
   meteoritePrefabs:
-  - {fileID: 3955418798240587005, guid: 18bb600265b4a4a4fa29f69b9f5b8404, type: 3}
-  - {fileID: 6542101368399430838, guid: 5c3659959ebb30a489d7eef3009f8afc, type: 3}
-  - {fileID: 122214560388886015, guid: 0cc97290e5be8a24a95be78aef2fc1a6, type: 3}
-  - {fileID: 1416072628507055035, guid: 0d18f1a7832f6a44fa77efb30bde703e, type: 3}
-  - {fileID: 8869476336097629157, guid: a928b6b7e9852c6429b1e3022b0ca7ed, type: 3}
-  - {fileID: 3525697572991576568, guid: 70c536de7d9d92449ae52a7ff80766e1, type: 3}
-  - {fileID: 6192019827025467921, guid: 46fd36c0039a3de4e8a017dd1652a1c9, type: 3}
-  - {fileID: 6747026704579016348, guid: ae4d463454dcd3f4f8546cef1366ff03, type: 3}
-  - {fileID: 3592861495988656133, guid: a605a9cb8e6a23444baef3434392fdb5, type: 3}
-  - {fileID: 6554404179560890419, guid: 10eda568a7de7e04693212985f98844e, type: 3}
-  - {fileID: 7979792204202706108, guid: a4f6c7d73f99033429f262bcba1bdeb8, type: 3}
-  - {fileID: 1082700227081861820, guid: 65ee5b4a801d6d44eb112962bd3246e2, type: 3}
-  - {fileID: 1273717868519207366, guid: 0b41583a19866d64b9483e371372b152, type: 3}
-  - {fileID: 172733410043596393, guid: df633265b44cbf44eae676819a0f1900, type: 3}
-  - {fileID: 1829189280640820382, guid: 97fc4a6e44a6aed4a9f7e4f0a4e48bc3, type: 3}
-  - {fileID: 8266873878386540212, guid: 04d0e694d442538469994e2367f412b4, type: 3}
-  - {fileID: 1187051454626278293, guid: 7e73d8cc1e09492498f76df02fb52fbf, type: 3}
-  - {fileID: 72295631480350893, guid: 73d0578dde8635c4db633cbe78f8af97, type: 3}
+  - {fileID: 5746131542090720143, guid: cf430feeb70b624409f0779ce8703445, type: 3}
+  - {fileID: 7447591736114443710, guid: e055880979ff0644faeaa8062d0e7f9a, type: 3}
+  - {fileID: 3936309852198016857, guid: 6043b8e07446d1b47bb9ac612e374400, type: 3}
+  - {fileID: 4096168605669188529, guid: ac790be64a5e16f42808ee8101bba64a, type: 3}
+  - {fileID: 3339019802863068271, guid: c100f56ffe6673044b794c5de263bb67, type: 3}
+  - {fileID: 3955418798240587005, guid: 1ddcaec86d781b346a3c649c52881489, type: 3}
+  - {fileID: 6542101368399430838, guid: d44183cd193522544b0c548942fead2f, type: 3}
+  - {fileID: 122214560388886015, guid: 347beb7b6d60b7a42a57eb1b7791dfde, type: 3}
+  - {fileID: 1416072628507055035, guid: 19e67ec892124cf4ea8749a7fe5c23e7, type: 3}
+  - {fileID: 8869476336097629157, guid: e307f0608ec588849a22962b33c1519d, type: 3}
+  - {fileID: 3525697572991576568, guid: 3e680d3cbbb22f043834348fcdfcf535, type: 3}
+  - {fileID: 6192019827025467921, guid: bf0bc21d327ec854bafefe11db10bb6a, type: 3}
   numberOfMeteorites: 10
   minDistanceFromStartOrEnd: 2
   Player:
@@ -922,3 +983,4 @@ SceneRoots:
   - {fileID: 1929384064}
   - {fileID: 237739483}
   - {fileID: 1292336117}
+  - {fileID: 343388274}
