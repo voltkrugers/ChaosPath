@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private List<Command> commands = new List<Command>();
     private bool isRecording = false;
     private Vector2 lastDirection = Vector2.zero;
+    public int HasCoin=0;
 
     void Update()
     {

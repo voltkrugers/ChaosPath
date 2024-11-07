@@ -36,11 +36,11 @@ public class Coin : MonoBehaviour
             }
             if (target != null)
             {
-                //target.GetComponent<PlayerController>().HasCoin = false;
+                target.GetComponent<PlayerController>().HasCoin -=1 ;
             }
 
             target = collision.gameObject;
-            //target.GetComponent<PlayerController>().HasCoin = true;
+            target.GetComponent<PlayerController>().HasCoin += 1;
             
         }
     }

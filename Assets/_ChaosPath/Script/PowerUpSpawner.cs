@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class AsteroidSpawner : MonoBehaviour
+public class PowerUpSpawner : MonoBehaviour
 {
     public List<GameObject> AsteroidNonMovable;
     public List<GameObject> AsteroidCrossing;
     public List<GameObject> AsteroidAlternating; 
+    public List<GameObject> Coins;
     private float camerHeight = 0f;
     private float cameraWidth = 0f;
 
     public void Start()
     {
+        Debug.LogWarning("Faut degager l'update a terme");
+
         if (AsteroidNonMovable.Count <= 0)
         {
             Debug.LogError("AsteroidNonMovable is Empty");
@@ -24,6 +27,10 @@ public class AsteroidSpawner : MonoBehaviour
         if (AsteroidAlternating.Count <= 0)
         {
             Debug.LogError("AsteroidAlternating is Empty");
+        }
+        if (Coins.Count <= 0)
+        {
+            Debug.LogError("Coins is Empty");
         }
         camerHeight = 2f * Camera.main.orthographicSize;
         cameraWidth = camerHeight * Camera.main.aspect;
@@ -43,6 +50,10 @@ public class AsteroidSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpawnAsteroidAlternating();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SpawnCoin();
         }
     }
 
@@ -79,6 +90,18 @@ public class AsteroidSpawner : MonoBehaviour
             Instantiate(AsteroidAlternating[Random.Range(0, AsteroidAlternating.Count)], spawnpos, Quaternion.identity);
 
             Debug.Log("Spawned Alternating here: " + spawnpos);
+        }
+    }
+
+    public void SpawnCoin() //Bonus coin
+    {
+        if (Coins.Count > 0)
+        {
+            Vector3 spawnpos = GetPositionWithinCameraView(new Vector3(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f)));
+            spawnpos.z = 0;
+            Instantiate(Coins[Random.Range(0, Coins.Count)], spawnpos, Quaternion.identity);
+
+            Debug.Log("Spawned Coin here: " + spawnpos);
         }
     }
 
