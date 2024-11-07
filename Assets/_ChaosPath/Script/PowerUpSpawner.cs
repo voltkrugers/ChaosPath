@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PowerUpSpawner : MonoBehaviour
 {
+    
+    public static PowerUpSpawner Instance { get; private set; }
     public List<GameObject> AsteroidNonMovable;
     public List<GameObject> AsteroidCrossing;
     public List<GameObject> AsteroidAlternating; 
@@ -12,6 +14,19 @@ public class PowerUpSpawner : MonoBehaviour
     private float camerHeight = 0f;
     private float cameraWidth = 0f;
     private int countTime;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
 
     public void Start()
     {
@@ -99,6 +114,7 @@ public class PowerUpSpawner : MonoBehaviour
         if (Coins.Count > 0)
         {
             Vector3 spawnpos = GetPositionWithinCameraView(new Vector3(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f)));
+            Debug.LogWarning(spawnpos);
             spawnpos.z = 0;
             GameObject coin =  Instantiate(Coins[Random.Range(0, Coins.Count)], spawnpos, Quaternion.identity);
             verifOtherObj(coin);
@@ -186,6 +202,7 @@ public class PowerUpSpawner : MonoBehaviour
     {
         float x = pos.x* cameraWidth - cameraWidth / 2;
         float y = pos.y* camerHeight - camerHeight / 2;
+        Debug.LogError(cameraWidth + "     " + camerHeight);
         return new Vector3(x, y, 0);
     }
 }
