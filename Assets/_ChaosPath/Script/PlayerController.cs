@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private bool isRecording = false;
     private Vector2 lastDirection = Vector2.zero;
     public int HasCoin = 0;
+    public GameObject spritePivot;
 
     void Update()
     {
@@ -70,6 +71,13 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector2 direction)
     {
-        transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
+        if (direction != Vector2.zero)
+        {
+            transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
+            
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            
+            spritePivot.transform.rotation = Quaternion.Euler(new Vector3(0,0 , angle-90));
+        }
     }
 }
