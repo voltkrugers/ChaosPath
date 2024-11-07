@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1290328513466132372}
   - component: {fileID: 1774442376068402625}
   - component: {fileID: 6600616755413245271}
+  - component: {fileID: 5187173847846039830}
   m_Layer: 0
   m_Name: Aster
   m_TagString: Untagged
@@ -136,6 +137,41 @@ MonoBehaviour:
   SecondPos: {fileID: 4483320781110879295}
   TargetPos: {x: 0, y: 0, z: 0}
   AverageDistanceToSecondPos: 10
+--- !u!58 &5187173847846039830
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359084588495867240}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.67
 --- !u!1 &4483320781110879295
 GameObject:
   m_ObjectHideFlags: 0

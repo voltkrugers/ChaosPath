@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
     {
         foreach (PlayerController player in playerControllers)
         {
+            player.StopAllCoroutines();
+        }
+        
+        foreach (PlayerController player in playerControllers)
+        {
             player.StartRecording();
         }
         
@@ -45,7 +50,7 @@ public class GameManager : MonoBehaviour
             player.PlayCommands();
         }
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         
         if (!EndGame)
         {
@@ -69,6 +74,7 @@ public class GameManager : MonoBehaviour
         pointsJ1 += pointsGagnesJ1;
         pointsJ2 += pointsGagnesJ2;
         Debug.Log("Points mis à jour : " + pointsJ1 + " vs " + pointsJ2);
+        playerControllers.Clear();
         SceneManager.LoadScene("SampleScene");
     }
 }

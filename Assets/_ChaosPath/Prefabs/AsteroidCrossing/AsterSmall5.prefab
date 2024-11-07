@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6284933979439046064}
   - component: {fileID: 1951226063401973168}
   - component: {fileID: 8141160370683326496}
+  - component: {fileID: -1044284081442966042}
   m_Layer: 0
   m_Name: AsterSmall5
   m_TagString: Untagged
@@ -99,3 +100,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   lifetime: 100
+  spawnpos: {x: 0, y: 0, z: 0}
+  randomFactor: 1
+  target: {x: 0, y: 0, z: 0}
+--- !u!58 &-1044284081442966042
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187051454626278293}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.28

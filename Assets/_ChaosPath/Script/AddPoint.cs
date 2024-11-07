@@ -19,7 +19,6 @@ public class AddPoint : MonoBehaviour
             {
                 GameManager.Instance.EndManche(0, 1);
             }
-            Destroy(Winner);
         }
     }
 }
