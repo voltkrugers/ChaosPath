@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private bool isRecording = false;
     private Vector2 lastDirection = Vector2.zero;
     public int HasCoin=0;
+    public PowerUp MyPowerUp = PowerUp.None;
 
     void Update()
     {

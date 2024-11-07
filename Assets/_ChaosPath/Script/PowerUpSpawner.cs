@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PowerUp {
+    None,
+    Coin,
+    AsteroidStatic,
+    AsteroidCrossing,
+    AsteroidAlternating
+    }
 
 public class PowerUpSpawner : MonoBehaviour
 {
@@ -11,7 +18,7 @@ public class PowerUpSpawner : MonoBehaviour
     public List<GameObject> Coins;
     private float camerHeight = 0f;
     private float cameraWidth = 0f;
-
+    
     public void Start()
     {
         Debug.LogWarning("Faut degager l'update a terme");
