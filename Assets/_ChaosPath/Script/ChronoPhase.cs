@@ -15,6 +15,10 @@ public class ChronoPhase : MonoBehaviour
     private bool Record;
     private float countDown = 0f;
 
+    private void Awake()
+    {
+        GameManager.Instance.chronophase = this;
+    }
     void start()
     {
         if (DefaultPowerUpPicture == null)

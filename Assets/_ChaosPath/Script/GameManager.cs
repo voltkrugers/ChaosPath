@@ -3,12 +3,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public List<PlayerController> playerControllers;
-
+    public List<PowerUp> ListPower;
+    public ChronoPhase chronophase;
     public bool EndGame = false;
     private int pointsJ1,pointsJ2;
 
@@ -76,5 +78,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Points mis à jour : " + pointsJ1 + " vs " + pointsJ2);
         playerControllers.Clear();
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public PowerUp getRandomPower( PlayerController playerController)
+    {
+        int randomIndex = Random.Range(0, ListPower.Count);
+        chronophase.changeImage(ListPower[randomIndex].sprite,playerController.playerId);
+        Debug.LogWarning(ListPower[randomIndex]);
+        return ListPower[randomIndex];
     }
 }

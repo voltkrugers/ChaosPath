@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastDirection = Vector2.zero;
     public int HasCoin=0;
     public PowerUp MyPowerUp;
+    
 
     void Update()
     {
@@ -22,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     public void StartRecording()
     {
+        MyPowerUp = GameManager.Instance.getRandomPower(this);
+        Debug.Log(MyPowerUp);
         isRecording = true;
         commands.Clear();
         StartCoroutine(StopRecordingAfterTime(10));
@@ -31,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
-        bool usePowerUp = Input.GetButtonDown("PowerUp1");
+        bool usePowerUp = Input.GetButtonDown("PowerUp"+playerId);
 
         Vector2 direction = new Vector2(moveX, moveY);
 
