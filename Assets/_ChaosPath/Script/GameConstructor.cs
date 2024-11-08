@@ -59,14 +59,6 @@ public class GameConstructor : MonoBehaviour
             Instantiate(randomMeteorite, meteorPosition, Quaternion.identity);
             
         }
-
-        // float Essaie = Random.Range(0f, 1f);
-        // Debug.LogError(Essaie);
-        // if (Essaie>0.5f)
-        // {
-        //     PowerUpSpawner.Instance.SpawnCoin();
-        // }
-        
         
         StartCoroutine(GameManager.Instance.SequencePlayers());
     }

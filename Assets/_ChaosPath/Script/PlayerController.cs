@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastDirection = Vector2.zero;
     public int HasCoin=0;
     public PowerUp MyPowerUp;
+    public PowerUp none;
 
 
     void Update()
@@ -20,12 +21,21 @@ public class PlayerController : MonoBehaviour
         {
             RecordInput();
         }
+        else
+        {
+            if (Input.GetButtonDown("PowerUp"+playerId))
+            {
+                PowerUpSpawner.Instance.UsePower(MyPowerUp);
+                MyPowerUp = none;
+                GameManager.Instance.chronophase.changeImage(MyPowerUp.sprite,this.playerId);
+            }
+        }
+
     }
 
     public void StartRecording()
     {
         MyPowerUp = GameManager.Instance.getRandomPower(this);
-        Debug.Log(MyPowerUp);
         isRecording = true;
         commands.Clear();
         StartCoroutine(StopRecordingAfterTime(10));
@@ -37,7 +47,7 @@ public class PlayerController : MonoBehaviour
         // Utiliser des axes spÃ©cifiques pour chaque joueur
         string horizontalAxis = "Horizontal" + playerId;
         string verticalAxis = "Vertical" + playerId;
-        bool usePowerUp = Input.GetButtonDown("PowerUp"+playerId);
+        
 
         float moveX = Input.GetAxis(horizontalAxis);
         float moveY = Input.GetAxis(verticalAxis);

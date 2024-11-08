@@ -52,6 +52,7 @@ public class ChronoPhase : MonoBehaviour
 
     public void changeImage(Sprite srite, int player)
     {
+        
         if (player == 1)
         {
             imageP1.sprite = srite;

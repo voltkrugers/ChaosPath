@@ -389,7 +389,7 @@ MonoBehaviour:
   minDistanceFromStartOrEnd: 2
   Player:
   - {fileID: 8412898135791319891, guid: 99d2e7e0b7b18c443a64978c9de9da0e, type: 3}
-  - {fileID: 1985410156551461661, guid: 74e840ed91542f14a9e4a6a1f3eac989, type: 3}
+  Coins: {fileID: 7748230369607341328, guid: e7fc73fdd0bd9ff4fa0df5b7aec9dad0, type: 3}
 --- !u!4 &703576134
 Transform:
   m_ObjectHideFlags: 0
@@ -844,8 +844,8 @@ MonoBehaviour:
   textPhase: {fileID: 1406817691}
   timeBetweenPhase: 10
   DefaultPowerUpPicture: {fileID: 21300000, guid: 11793154aa1c52a4ca4dfcd2fbf282ce, type: 3}
-  imageP1: {fileID: 0}
-  imageP2: {fileID: 0}
+  imageP1: {fileID: 999872419}
+  imageP2: {fileID: 1388627010}
 --- !u!114 &1610345555
 MonoBehaviour:
   m_ObjectHideFlags: 0

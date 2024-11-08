@@ -52,21 +52,21 @@ public class PowerUpSpawner : MonoBehaviour
 
     }
 
-    public void Update() //ca va d�gager ca
+    public void UsePower(PowerUp power) //ca va degager ca
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (power.type == PowerUpType.AsteroidStatic)
         {
             SpawnAsteroidNonMovable();
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (power.type == PowerUpType.AsteroidCrossing )
         {
             SpawnAsteroidCrossing();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (power.type == PowerUpType.AsteroidAlternating)
         {
             SpawnAsteroidAlternating();
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (power.type == PowerUpType.Coin)
         {
             SpawnCoin();
         }
@@ -201,7 +201,6 @@ public class PowerUpSpawner : MonoBehaviour
     {
         float x = pos.x* cameraWidth - cameraWidth / 2;
         float y = pos.y* camerHeight - camerHeight / 2;
-        Debug.LogError(cameraWidth + "     " + camerHeight);
         return new Vector3(x, y, 0);
     }
 }

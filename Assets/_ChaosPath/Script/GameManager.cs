@@ -82,9 +82,9 @@ public class GameManager : MonoBehaviour
 
     public PowerUp getRandomPower( PlayerController playerController)
     {
+        
         int randomIndex = Random.Range(0, ListPower.Count);
         chronophase.changeImage(ListPower[randomIndex].sprite,playerController.playerId);
-        Debug.LogWarning(ListPower[randomIndex]);
         return ListPower[randomIndex];
     }
 }
