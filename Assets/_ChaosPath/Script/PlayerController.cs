@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastDirection = Vector2.zero;
     public int HasCoin=0;
     public PowerUp MyPowerUp;
-    
+
 
     void Update()
     {
@@ -33,18 +33,22 @@ public class PlayerController : MonoBehaviour
 
     private void RecordInput()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
+        
+        // Utiliser des axes spÃ©cifiques pour chaque joueur
+        string horizontalAxis = "Horizontal" + playerId;
+        string verticalAxis = "Vertical" + playerId;
         bool usePowerUp = Input.GetButtonDown("PowerUp"+playerId);
+
+        float moveX = Input.GetAxis(horizontalAxis);
+        float moveY = Input.GetAxis(verticalAxis);
+        
 
         Vector2 direction = new Vector2(moveX, moveY);
 
-       
-        if (direction != lastDirection)
-        {
-            commands.Add(new Command(direction, Time.time));
-            lastDirection = direction;
-        }
+
+        commands.Add(new Command(direction, Time.time));
+        lastDirection = direction;
+
     }
 
     private IEnumerator StopRecordingAfterTime(float duration)
