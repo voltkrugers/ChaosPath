@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("PowerUp"+playerId))
             {
+                
+                Debug.Log(playerId);
                 PowerUpSpawner.Instance.UsePower(MyPowerUp);
                 MyPowerUp = none;
                 GameManager.Instance.chronophase.changeImage(MyPowerUp.sprite,this.playerId);
