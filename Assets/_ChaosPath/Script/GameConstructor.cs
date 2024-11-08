@@ -23,7 +23,7 @@ public class GameConstructor : MonoBehaviour
 
     public void GenerateMap()
     {
-
+        GameManager.Instance.EndGame = false;
         Camera cam = Camera.main;
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;

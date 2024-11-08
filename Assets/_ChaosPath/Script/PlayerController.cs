@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         isRecording = false;
-        Debug.Log($"Player {playerId} finished recording: {commands.Count} commands recorded.");
+        //Debug.Log($"Player {playerId} finished recording: {commands.Count} commands recorded.");
     }
 
     public void PlayCommands()

@@ -81,7 +81,7 @@ public class PowerUpSpawner : MonoBehaviour
             spawnpos.z = 0;
             Instantiate(AsteroidNonMovable[Random.Range(0, AsteroidNonMovable.Count)],spawnpos,Quaternion.identity);
 
-            Debug.Log("Spawned NonMovable here: "+ spawnpos);
+            //Debug.Log("Spawned NonMovable here: "+ spawnpos);
         }
     }
     
@@ -93,7 +93,7 @@ public class PowerUpSpawner : MonoBehaviour
             spawnpos.z = 0;
             Instantiate(AsteroidCrossing[Random.Range(0, AsteroidCrossing.Count)], spawnpos, Quaternion.identity);
 
-            Debug.Log("Spawned Crossing here: " + spawnpos);
+            //Debug.Log("Spawned Crossing here: " + spawnpos);
         }
     }
 
@@ -105,7 +105,7 @@ public class PowerUpSpawner : MonoBehaviour
             spawnpos.z = 0;
             Instantiate(AsteroidAlternating[Random.Range(0, AsteroidAlternating.Count)], spawnpos, Quaternion.identity);
 
-            Debug.Log("Spawned Alternating here: " + spawnpos);
+            //Debug.Log("Spawned Alternating here: " + spawnpos);
         }
     }
 
@@ -118,7 +118,7 @@ public class PowerUpSpawner : MonoBehaviour
             spawnpos.z = 0;
             GameObject coin =  Instantiate(Coins[Random.Range(0, Coins.Count)], spawnpos, Quaternion.identity);
             verifOtherObj(coin);
-            Debug.Log("Spawned Coin here: " + spawnpos);
+            //Debug.Log("Spawned Coin here: " + spawnpos);
         }
     }
 
@@ -130,11 +130,11 @@ public class PowerUpSpawner : MonoBehaviour
 
         if (hit == null)
         {
-            Debug.Log("Pas d'autre objet à proximité, déplacement possible.");
+            //Debug.Log("Pas d'autre objet à proximité, déplacement possible.");
         }
         else
         {
-            Debug.Log($"Collision détectée avec l'objet : {hit.gameObject.name}. Relocaliser.");
+            //Debug.Log($"Collision détectée avec l'objet : {hit.gameObject.name}. Relocaliser.");
             FindNewPosition(ObjToVerif);
         }
     }
@@ -157,7 +157,7 @@ public class PowerUpSpawner : MonoBehaviour
             return;
         }
         obj.transform.position = newPosition;
-        Debug.Log("Objet déplacé vers une position libre.");
+        //Debug.Log("Objet déplacé vers une position libre.");
         countTime = 0;
     }
     private Vector3 GetPointsOutsideView()
