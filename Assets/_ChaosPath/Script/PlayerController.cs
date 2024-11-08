@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private bool isRecording = false;
     private Vector2 lastDirection = Vector2.zero;
     public int HasCoin=0;
-    public PowerUp MyPowerUp = PowerUp.None;
+    public PowerUp MyPowerUp;
 
     void Update()
     {
@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
+        bool usePowerUp = Input.GetButtonDown("PowerUp1");
 
         Vector2 direction = new Vector2(moveX, moveY);
 

@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PowerUp {
-    None,
-    Coin,
-    AsteroidStatic,
-    AsteroidCrossing,
-    AsteroidAlternating
-    }
-
 public class PowerUpSpawner : MonoBehaviour
 {
     public List<GameObject> AsteroidNonMovable;
