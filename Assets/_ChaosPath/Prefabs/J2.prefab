@@ -123,7 +123,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 2
   moveSpeed: 3
-  Image: {fileID: 5828120053693740669}
+  HasCoin: 0
+  MyPowerUp: {fileID: 0}
+  none: {fileID: 11400000, guid: ad26aa7278f087f40867967eca600020, type: 2}
 --- !u!50 &7352533514895539717
 Rigidbody2D:
   serializedVersion: 4
