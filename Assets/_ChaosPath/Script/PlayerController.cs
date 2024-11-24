@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private List<Command> commands = new List<Command>();
     private bool isRecording = false;
     private Vector2 lastDirection = Vector2.zero;
-    public int HasCoin=0;
+    public int bonusPoints=0;
     public PowerUp MyPowerUp;
     public PowerUp none;
 
@@ -25,14 +25,11 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("PowerUp"+playerId))
             {
-                
-                Debug.Log(playerId);
-                PowerUpSpawner.Instance.UsePower(MyPowerUp);
+                PowerUpSpawner.Instance.UsePower(MyPowerUp,this);
                 MyPowerUp = none;
                 GameManager.Instance.chronophase.changeImage(MyPowerUp.sprite,this.playerId);
             }
         }
-
     }
 
     public void StartRecording()
@@ -91,5 +88,10 @@ public class PlayerController : MonoBehaviour
     private void Move(Vector2 direction)
     {
         transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
+    }
+
+    public void Die()
+    {
+        this.gameObject.SetActive(false);
     }
 }

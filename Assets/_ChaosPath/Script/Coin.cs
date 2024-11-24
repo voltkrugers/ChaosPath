@@ -30,17 +30,18 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            PlayerController temp = target.GetComponent<PlayerController>();
             if (target != collision.gameObject)
             {
                 anim.SetTrigger("Picked");
             }
             if (target != null)
             {
-                target.GetComponent<PlayerController>().HasCoin -=1 ;
+                temp.bonusPoints -=1 ;
             }
 
             target = collision.gameObject;
-            target.GetComponent<PlayerController>().HasCoin += 1;
+            temp.bonusPoints += 1;
             
         }
     }

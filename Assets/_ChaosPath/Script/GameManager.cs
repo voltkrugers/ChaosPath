@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public float timePlayPhase = 15f;
     public List<PowerUp> ListPower;
     public bool EndGame = false;
-    private int pointsJ1,pointsJ2;
+    private int pointsJ1,pointsJ2=0;
 
     private void Awake()
     {
@@ -28,12 +28,6 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        pointsJ1 = 0;
-        pointsJ2 = 0;
     }
 
 
@@ -81,7 +75,7 @@ public class GameManager : MonoBehaviour
         EndGame = true;
         pointsJ1 += pointsGagnesJ1;
         pointsJ2 += pointsGagnesJ2;
-        //Debug.Log("Points mis à jour : " + pointsJ1 + " vs " + pointsJ2);
+
         playerControllers.Clear();
         SceneManager.LoadScene("SampleScene");
     }

@@ -9,6 +9,7 @@ public class AsteroidCrossing : MonoBehaviour
     public Vector3 spawnpos;
     public float randomFactor = 1f;
     public Vector3 target;
+    public PlayerController Owner;
 
     private float camerHeight = 0f;
     private float cameraWidth = 0f;
@@ -37,5 +38,15 @@ public class AsteroidCrossing : MonoBehaviour
         float x = pos.x * cameraWidth - cameraWidth / 2;
         float y = pos.y * camerHeight - camerHeight / 2;
         return new Vector3(x, y, 0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            Owner.bonusPoints += 1;
+            collision.gameObject.GetComponent<PlayerController>().Die();
+            this.gameObject.SetActive(false);
+        }
     }
 }

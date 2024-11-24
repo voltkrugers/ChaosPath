@@ -9,6 +9,7 @@ public class PowerUpSpawner : MonoBehaviour
     public List<GameObject> AsteroidNonMovable;
     public List<GameObject> AsteroidCrossing;
     public List<GameObject> AsteroidAlternating; 
+    public List<GameObject> Projectiles;
     public List<GameObject> Coins;
     private float camerHeight = 0f;
     private float cameraWidth = 0f;
@@ -29,8 +30,6 @@ public class PowerUpSpawner : MonoBehaviour
 
     public void Start()
     {
-        Debug.LogWarning("Faut degager l'update a terme");
-
         if (AsteroidNonMovable.Count <= 0)
         {
             Debug.LogError("AsteroidNonMovable is Empty");
@@ -47,12 +46,16 @@ public class PowerUpSpawner : MonoBehaviour
         {
             Debug.LogError("Coins is Empty");
         }
+        if (Projectiles.Count <= 0)
+        {
+            Debug.LogError("Projectile is Empty");
+        }
         camerHeight = 2f * Camera.main.orthographicSize;
         cameraWidth = camerHeight * Camera.main.aspect;
 
     }
 
-    public void UsePower(PowerUp power) //ca va degager ca
+    public void UsePower(PowerUp power, PlayerController owner) //ca va degager ca // finalement non, on l'a réutilisé
     {
         if (power.type == PowerUpType.AsteroidStatic)
         {
@@ -60,7 +63,7 @@ public class PowerUpSpawner : MonoBehaviour
         }
         if (power.type == PowerUpType.AsteroidCrossing )
         {
-            SpawnAsteroidCrossing();
+            SpawnAsteroidCrossing(owner);
         }
         if (power.type == PowerUpType.AsteroidAlternating)
         {
@@ -69,6 +72,10 @@ public class PowerUpSpawner : MonoBehaviour
         if (power.type == PowerUpType.Coin)
         {
             SpawnCoin();
+        }
+        if (power.type == PowerUpType.Projectile)
+        {
+            SpawnProjectile(owner);
         }
     }
 
@@ -79,20 +86,17 @@ public class PowerUpSpawner : MonoBehaviour
             Vector3 spawnpos = GetPositionWithinCameraView(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f)));
             spawnpos.z = 0;
             Instantiate(AsteroidNonMovable[Random.Range(0, AsteroidNonMovable.Count)],spawnpos,Quaternion.identity);
-
-            //Debug.Log("Spawned NonMovable here: "+ spawnpos);
         }
     }
     
-    public void SpawnAsteroidCrossing() //Asteroid spawn hors de l'ecran et se dirige a peu pres vers le centre de la camera
+    public void SpawnAsteroidCrossing(PlayerController owner) //Asteroid spawn hors de l'ecran et se dirige a peu pres vers le centre de la camera
     {
         if (AsteroidCrossing.Count > 0)
         {
             Vector3 spawnpos = GetPositionWithinCameraView(GetPointsOutsideView());
             spawnpos.z = 0;
-            Instantiate(AsteroidCrossing[Random.Range(0, AsteroidCrossing.Count)], spawnpos, Quaternion.identity);
-
-            //Debug.Log("Spawned Crossing here: " + spawnpos);
+            GameObject ast=Instantiate(AsteroidCrossing[Random.Range(0, AsteroidCrossing.Count)], spawnpos, Quaternion.identity);
+            ast.GetComponent<AsteroidCrossing>().Owner = owner;
         }
     }
 
@@ -103,25 +107,56 @@ public class PowerUpSpawner : MonoBehaviour
             Vector3 spawnpos = GetPositionWithinCameraView(new Vector3(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f)));
             spawnpos.z = 0;
             Instantiate(AsteroidAlternating[Random.Range(0, AsteroidAlternating.Count)], spawnpos, Quaternion.identity);
-
-            //Debug.Log("Spawned Alternating here: " + spawnpos);
         }
     }
 
     public void SpawnCoin() //Bonus coin
     {
+        
         if (Coins.Count > 0)
         {
             Vector3 spawnpos = GetPositionWithinCameraView(new Vector3(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f)));
-            Debug.LogWarning(spawnpos);
             spawnpos.z = 0;
-            GameObject coin =  Instantiate(Coins[Random.Range(0, Coins.Count)], spawnpos, Quaternion.identity);
-            verifOtherObj(coin);
-            //Debug.Log("Spawned Coin here: " + spawnpos);
+            GameObject coin = Instantiate(Coins[Random.Range(0, Coins.Count)], spawnpos, Quaternion.identity);
+            VerifOtherObj(coin);
+        }
+    }
+    public void SpawnProjectile(PlayerController owner) //Bullets shot by the players
+    {
+        if (Projectiles.Count > 0)
+        {
+            float angle = 30f;
+            Vector3 spawnpos = new Vector3(owner.transform.position.x, owner.transform.position.y, 0);
+
+            //bullet 1
+            GameObject bullet1 = Instantiate(Projectiles[Random.Range(0, Coins.Count)], spawnpos, Quaternion.Euler(0, 0, -angle + owner.transform.rotation.z));
+            Vector3 direction1 = Quaternion.Euler(0, 0, -angle + owner.gameObject.transform.rotation.eulerAngles.z) * Vector3.up ;
+
+            Projectile projectile1 = bullet1.GetComponent<Projectile>();
+            projectile1.Owner = owner;
+            projectile1.target = direction1;
+
+
+            //bullet 2
+            GameObject bullet2 = Instantiate(Projectiles[Random.Range(0, Coins.Count)], spawnpos, Quaternion.Euler(0, 0, owner.transform.rotation.z));
+            Vector3 direction2 = Quaternion.Euler(0, 0, owner.gameObject.transform.rotation.eulerAngles.z) * Vector3.up;
+
+            Projectile projectile2 = bullet2.GetComponent<Projectile>();
+            projectile2.Owner = owner;
+            projectile2.target = direction2;
+
+
+            //bullet 3
+            GameObject bullet3 = Instantiate(Projectiles[Random.Range(0, Coins.Count)], spawnpos, Quaternion.Euler(0, 0, angle + owner.transform.rotation.z));
+            Vector3 direction3 = Quaternion.Euler(0, 0, angle + owner.gameObject.transform.rotation.eulerAngles.z) * Vector3.up;
+
+            Projectile projectile3 = bullet3.GetComponent<Projectile>();
+            projectile3.Owner = owner;
+            projectile3.target = direction3;
         }
     }
 
-    public void verifOtherObj(GameObject ObjToVerif)
+    public void VerifOtherObj(GameObject ObjToVerif)
     {
         float checkRadius = 1.0f; 
         Vector2 positionToCheck = ObjToVerif.transform.position;

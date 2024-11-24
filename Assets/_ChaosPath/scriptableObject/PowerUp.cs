@@ -8,7 +8,8 @@ public enum PowerUpType
     Coin,
     AsteroidStatic,
     AsteroidCrossing,
-    AsteroidAlternating
+    AsteroidAlternating,
+    Projectile
 }
 
 [CreateAssetMenu(fileName = "PowerUp", menuName = "ScriptableObjects/PowerUp", order = 1)]
