@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     public int bonusPoints=0;
     public PowerUp MyPowerUp;
     public PowerUp none;
-
+    public AudioClip explosion;
+    public AudioClip bonk;
 
     void Update()
     {
@@ -93,5 +94,17 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         this.gameObject.SetActive(false);
+        AudioSource.PlayClipAtPoint(explosion, transform.position);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.relativeVelocity.magnitude > 1)           //si on tape assez fort, ca evite les petites detections
+        {
+            if (!collision.gameObject.tag.Equals("Killing"))    //seuleument les truc qui tuent pas font bonk
+            {
+                AudioSource.PlayClipAtPoint(bonk, transform.position);
+            }
+        }
     }
 }

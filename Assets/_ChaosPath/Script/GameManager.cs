@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public List<PlayerController> playerControllers;
-    
+
     public ChronoPhase chronophase;
     public float timeRecordPhase = 10f;
     public float timePlayPhase = 15f;

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class AddPoint : MonoBehaviour
 {
+    public AudioClip reachingSound; 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

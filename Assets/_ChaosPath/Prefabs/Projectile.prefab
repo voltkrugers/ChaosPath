@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 7521459253245419802}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Killing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,6 +208,7 @@ MonoBehaviour:
   speed: 1
   lifetime: 100
   spawnpos: {x: 0, y: 0, z: 0}
+  target: {x: 0, y: 0, z: 0}
   Owner: {fileID: 0}
 --- !u!58 &7521459253245419802
 CircleCollider2D:

@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6974968911891868089}
   m_Layer: 0
   m_Name: AsterSmall4
-  m_TagString: Untagged
+  m_TagString: Killing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
