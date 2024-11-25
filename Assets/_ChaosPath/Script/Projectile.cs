@@ -34,8 +34,9 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player")&& collision.gameObject!=Owner.gameObject)
         {
-            Instantiate(explosion, transform);
             Owner.bonusPoints += 1;
+            GameObject boom = Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(boom, 2f); 
             collision.gameObject.GetComponent<PlayerController>().Die();
             this.gameObject.SetActive(false);
         }

@@ -130,7 +130,7 @@ public class PowerUpSpawner : MonoBehaviour
 
             //bullet 1
             GameObject bullet1 = Instantiate(Projectiles[Random.Range(0, Coins.Count)], spawnpos, Quaternion.Euler(0, 0, -angle + owner.transform.rotation.z));
-            Vector3 direction1 = Quaternion.Euler(0, 0, -angle + owner.gameObject.transform.rotation.eulerAngles.z) * Vector3.up ;
+            Vector3 direction1 = Quaternion.Euler(0, 0, -angle + owner.spritePivot.transform.rotation.eulerAngles.z) * Vector3.up ;
 
             Projectile projectile1 = bullet1.GetComponent<Projectile>();
             projectile1.Owner = owner;
@@ -139,7 +139,7 @@ public class PowerUpSpawner : MonoBehaviour
 
             //bullet 2
             GameObject bullet2 = Instantiate(Projectiles[Random.Range(0, Coins.Count)], spawnpos, Quaternion.Euler(0, 0, owner.transform.rotation.z));
-            Vector3 direction2 = Quaternion.Euler(0, 0, owner.gameObject.transform.rotation.eulerAngles.z) * Vector3.up;
+            Vector3 direction2 = Quaternion.Euler(0, 0, owner.spritePivot.transform.rotation.eulerAngles.z) * Vector3.up;
 
             Projectile projectile2 = bullet2.GetComponent<Projectile>();
             projectile2.Owner = owner;
@@ -148,7 +148,7 @@ public class PowerUpSpawner : MonoBehaviour
 
             //bullet 3
             GameObject bullet3 = Instantiate(Projectiles[Random.Range(0, Coins.Count)], spawnpos, Quaternion.Euler(0, 0, angle + owner.transform.rotation.z));
-            Vector3 direction3 = Quaternion.Euler(0, 0, angle + owner.gameObject.transform.rotation.eulerAngles.z) * Vector3.up;
+            Vector3 direction3 = Quaternion.Euler(0, 0, angle + owner.spritePivot.transform.rotation.eulerAngles.z) * Vector3.up;
 
             Projectile projectile3 = bullet3.GetComponent<Projectile>();
             projectile3.Owner = owner;
