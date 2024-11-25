@@ -1119,6 +1119,10 @@ MonoBehaviour:
   timePlayPhase: 15
   ListPower:
   - {fileID: 11400000, guid: 940e749ba3a3d14449a33be2bf17258a, type: 2}
+  - {fileID: 11400000, guid: bcf69547057f3ee4584d39ac12fecf25, type: 2}
+  - {fileID: 11400000, guid: 47050b1b23f262042bc65a75399c9777, type: 2}
+  - {fileID: 11400000, guid: e6f24d86028022b4e8772db707d173d7, type: 2}
+  - {fileID: 11400000, guid: a0dccc96479a6d34d9b8660c030bece1, type: 2}
   EndGame: 0
 --- !u!4 &1929384064
 Transform:
