@@ -3,14 +3,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public List<PlayerController> playerControllers;
-
+    
+    public ChronoPhase chronophase;
+    public float timeRecordPhase = 10f;
+    public float timePlayPhase = 15f;
+    public List<PowerUp> ListPower;
     public bool EndGame = false;
-    private int pointsJ1,pointsJ2;
+    private int pointsJ1,pointsJ2=0;
 
     private void Awake()
     {
@@ -24,12 +29,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    private void Start()
-    {
-        pointsJ1 = 0;
-        pointsJ2 = 0;
-    }
-    
+
 
     public IEnumerator SequencePlayers()
     {
@@ -37,20 +37,22 @@ public class GameManager : MonoBehaviour
         {
             player.StopAllCoroutines();
         }
-        
+
+        chronophase.setText("Enregistrement...");
+        chronophase.setCountDown(timeRecordPhase);
         foreach (PlayerController player in playerControllers)
         {
             player.StartRecording();
         }
-        
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(timeRecordPhase);
 
+        chronophase.setText("Action !");
+        chronophase.setCountDown(timePlayPhase);
         foreach (PlayerController player in playerControllers)
         {
             player.PlayCommands();
         }
-
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(timePlayPhase);
         
         if (!EndGame)
         {
@@ -73,8 +75,16 @@ public class GameManager : MonoBehaviour
         EndGame = true;
         pointsJ1 += pointsGagnesJ1;
         pointsJ2 += pointsGagnesJ2;
-        Debug.Log("Points mis à jour : " + pointsJ1 + " vs " + pointsJ2);
+
         playerControllers.Clear();
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public PowerUp getRandomPower( PlayerController playerController)
+    {
+        
+        int randomIndex = Random.Range(0, ListPower.Count);
+        chronophase.changeImage(ListPower[randomIndex].sprite,playerController.playerId);
+        return ListPower[randomIndex];
     }
 }

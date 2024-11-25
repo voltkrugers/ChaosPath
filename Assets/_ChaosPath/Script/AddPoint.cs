@@ -13,11 +13,11 @@ public class AddPoint : MonoBehaviour
             PlayerController Winner = other.GetComponent<PlayerController>();
             if (Winner.playerId == 1)
             {
-                GameManager.Instance.EndManche(1+Winner.HasCoin,0);
+                GameManager.Instance.EndManche(1+Winner.bonusPoints,0);
             }
             else
             {
-                GameManager.Instance.EndManche(0, 1+Winner.HasCoin);
+                GameManager.Instance.EndManche(0, 1+Winner.bonusPoints);
             }
         }
     }
