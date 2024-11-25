@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         foreach (var player in playerControllers)
         {
             player.gameObject.transform.position = GameConstructor.PosStart;
+            player.gameObject.SetActive(true);
         }
     }
     
