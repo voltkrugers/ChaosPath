@@ -10,11 +10,9 @@ public class PlayerController : MonoBehaviour
     private List<Command> commands = new List<Command>();
     private bool isRecording = false;
     private Vector2 lastDirection = Vector2.zero;
-    public int bonusPoints=0;
+    public int bonusPoints = 0;
     public PowerUp MyPowerUp;
     public PowerUp none;
-    
-
 
     void Update()
     {
@@ -24,11 +22,12 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("PowerUp"+playerId))
+            if (Input.GetButtonDown("PowerUp" + playerId))
             {
-                PowerUpSpawner.Instance.UsePower(MyPowerUp,this);
+                Debug.Log(playerId);
+                PowerUpSpawner.Instance.UsePower(MyPowerUp, this);
                 MyPowerUp = none;
-                GameManager.Instance.chronophase.changeImage(MyPowerUp.sprite,this.playerId);
+                GameManager.Instance.chronophase.changeImage(MyPowerUp.sprite, this.playerId);
             }
         }
     }
@@ -43,29 +42,23 @@ public class PlayerController : MonoBehaviour
 
     private void RecordInput()
     {
-        
         // Utiliser des axes spÃ©cifiques pour chaque joueur
         string horizontalAxis = "Horizontal" + playerId;
         string verticalAxis = "Vertical" + playerId;
-        
 
         float moveX = Input.GetAxis(horizontalAxis);
         float moveY = Input.GetAxis(verticalAxis);
-        
 
         Vector2 direction = new Vector2(moveX, moveY);
 
-
         commands.Add(new Command(direction, Time.time));
         lastDirection = direction;
-
     }
 
     private IEnumerator StopRecordingAfterTime(float duration)
     {
         yield return new WaitForSeconds(duration);
         isRecording = false;
-        //Debug.Log($"Player {playerId} finished recording: {commands.Count} commands recorded.");
     }
 
     public void PlayCommands()
@@ -94,7 +87,7 @@ public class PlayerController : MonoBehaviour
             
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             
-            transform.rotation = Quaternion.Euler(new Vector3(0,0 , angle-90));
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         }
     }
 
