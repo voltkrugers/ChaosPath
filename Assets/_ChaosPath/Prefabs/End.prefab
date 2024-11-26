@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7521593369814642115}
   - component: {fileID: 7881129822915434243}
   - component: {fileID: 9025138155879628611}
-  - component: {fileID: 5625925897426745837}
+  - component: {fileID: 4141386634561453085}
   m_Layer: 0
   m_Name: End
   m_TagString: End
@@ -134,8 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c6130f89659364bbf96a97a641f522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reachingSound: {fileID: 8300000, guid: 21ef43a901c894d4f90aaa03aa758189, type: 3}
---- !u!95 &5625925897426745837
+--- !u!95 &4141386634561453085
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public float timePlayPhase = 15f;
     public List<PowerUp> ListPower;
     public bool EndGame = false;
-    private int pointsJ1,pointsJ2=0;
+    public int pointsJ1,pointsJ2=0;
 
     private void Awake()
     {
@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
         foreach (var player in playerControllers)
         {
             player.gameObject.transform.position = GameConstructor.PosStart;
+            player.gameObject.transform.rotation = Quaternion.AngleAxis(0,Vector3.zero);
+            player.gameObject.SetActive(true);
         }
     }
     
@@ -77,7 +79,7 @@ public class GameManager : MonoBehaviour
         pointsJ2 += pointsGagnesJ2;
 
         playerControllers.Clear();
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("ScoreBoard");
     }
 
     public PowerUp getRandomPower( PlayerController playerController)
