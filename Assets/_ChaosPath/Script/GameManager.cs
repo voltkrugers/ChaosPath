@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         pointsJ2 += pointsGagnesJ2;
 
         playerControllers.Clear();
+        GameState.Instance.state = State.EndScreen;
         SceneManager.LoadScene("ScoreBoard");
     }
 

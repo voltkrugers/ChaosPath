@@ -17,6 +17,7 @@ public class ScoreBoard : MonoBehaviour
 
     public void next()
     {
+        GameState.Instance.state = State.Playing;
         SceneManager.LoadScene("Game");
     }
 }
