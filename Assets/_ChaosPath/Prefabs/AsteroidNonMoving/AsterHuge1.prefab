@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4706317341639660141}
   - component: {fileID: 3045735248094741636}
   - component: {fileID: 563970930385855363}
+  - component: {fileID: 1965825459653432156}
   m_Layer: 0
   m_Name: AsterHuge1
   m_TagString: Untagged
@@ -120,3 +121,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.55
+--- !u!95 &1965825459653432156
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869476336097629157}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31a9d519dabcc514fa9aabedc44ed9c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
