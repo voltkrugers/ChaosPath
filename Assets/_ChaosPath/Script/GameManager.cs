@@ -79,8 +79,14 @@ public class GameManager : MonoBehaviour
         pointsJ1 += pointsGagnesJ1;
         pointsJ2 += pointsGagnesJ2;
 
+        foreach (PlayerController pc in playerControllers)
+        {
+            pc.StopAllCoroutines();
+        }
+
         playerControllers.Clear();
         GameState.Instance.state = State.EndScreen;
+        this.StopAllCoroutines();
         SceneManager.LoadScene("ScoreBoard");
     }
 

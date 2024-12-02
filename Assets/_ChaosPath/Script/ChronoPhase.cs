@@ -12,7 +12,7 @@ public class ChronoPhase : MonoBehaviour
     public Sprite DefaultPowerUpPicture;
     public Image imageP1;
     public Image imageP2;
-    private float countDown = 0f;
+    public float countDown = 0f;
 
     private void Awake()
     {
